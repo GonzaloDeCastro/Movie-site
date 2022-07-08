@@ -8,7 +8,12 @@ const loadMovie = async () => {
       const data = await resp.json();
       let movies = "";
       data.results.map((movie) => {
-        movies = movies + `<h1>${movie.title}</h1>`;
+        movies += `
+          <div class="movie">
+            <img class="poster" src="https://image.tmdb.org/t/p/w500/${movie.poster_path}">
+          </div>
+          <h3 class="title">${movie.title}</h3>
+        `;
       });
 
       document.getElementById("container").innerHTML = movies;
