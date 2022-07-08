@@ -1,7 +1,25 @@
+let page = 1;
+const btnBack = document.getElementById("btnBack");
+const btnNext = document.getElementById("btnNext");
+
+btnNext.addEventListener("click", () => {
+  if (page < 1000) {
+    page += 1;
+    loadMovie();
+  }
+});
+
+btnBack.addEventListener("click", () => {
+  if (page > 1) {
+    page -= 1;
+    loadMovie();
+  }
+});
+
 const loadMovie = async () => {
   try {
     const resp = await fetch(
-      "https://api.themoviedb.org/3/movie/popular?api_key=2ebeba6c8e22651406e52dfb2ffc2491"
+      `https://api.themoviedb.org/3/movie/popular?api_key=2ebeba6c8e22651406e52dfb2ffc2491&page=${page}`
     );
     console.log(resp);
     if (resp.status === 200) {
