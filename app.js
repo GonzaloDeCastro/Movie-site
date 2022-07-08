@@ -1,12 +1,24 @@
 const loadMovie = async () => {
   try {
     const resp = await fetch(
-      "https://api.themoviedb.org/3/movie/550?api_key=2ebeba6c8e22651406e52dfb2ffc2491"
+      "https://api.themoviedb.org/3/movie/popular?api_key=2ebeba6c8e22651406e52dfb2ffc2491"
     );
     console.log(resp);
-    data = await resp.json();
+    if (resp.status === 200) {
+      const data = await resp.json();
+      let movies = "";
+      data.results.map((movie) => {
+        movies = movies + `<h1>${movie.title}</h1>`;
+      });
 
-    console.log(data);
+      document.getElementById("container").innerHTML = movies;
+    } else if (resp.status === 401) {
+      console.log("Error URL API");
+    } else if (resp.status === 404) {
+      console.log("Movie not found");
+    } else {
+      console.log("Error 500");
+    }
   } catch (error) {
     console.log(error);
   }

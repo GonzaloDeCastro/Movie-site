@@ -10,7 +10,7 @@ body {
   color: #1d1d1d;
 }
 
-.containter {
+.container {
   width: 90%;
   max-width: 1000px;
   margin: 40px auto 100px auto;
@@ -20,16 +20,16 @@ body {
   gap: 40px;
 }
 
-.containter .movie {
+.container .movie {
   text-align: center;
 }
 
-.containter .movie .title {
+.container .movie .title {
   font-size: 16px;
   font-weight: 600;
 }
 
-.containter .movie .poster {
+.container .movie .poster {
   width: 100%;
   margin-bottom: 10px;
   border-radius: 15px;
